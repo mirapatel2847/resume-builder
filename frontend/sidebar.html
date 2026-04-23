@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background-color: #111827;
+  color: white;
+  position: fixed;
+  padding: 20px;
+}
+
+.logo {
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.sidebar ul li:hover {
+  background-color: #374151;
+}
+</style>
+    </head>
+    <body>
+    <div class="sidebar">
+  <h2 class="logo">ResumeAI</h2>
+
+  <ul>
+    <li onclick="goTo('index.html')">Dashboard</li>
+    <li onclick="goTo('create.html')">Create Resume</li>
+    <li onclick="goTo('preview.html')">Preview</li>
+    <li onclick="goTo('templates.html')">Templates</li>
+  </ul>
+</div>
+<script>
+function goTo(page) {
+  window.location.href = page;
+}
+</script>
+</body>
+</html>

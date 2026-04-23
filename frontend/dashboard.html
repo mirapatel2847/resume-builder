@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hirevo Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      background: #121212;
+      color: white;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 220px;
+      height: 100vh;
+      background: linear-gradient(180deg, #6a11cb, #2575fc);
+      padding: 20px;
+      position: fixed;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar ul li {
+      padding: 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .sidebar ul li:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(5px);
+    }
+
+    /* MAIN */
+    .main {
+      margin-left: 240px;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logout {
+      background: #ef4444;
+      border: none;
+      padding: 10px 18px;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
+
+    .logout:hover {
+      background: #c0392b;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #6a11cb;
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: box-shadow 0.3s, transform 0.2s;
+      margin-top: 15px;
+    }
+
+    .cta-btn:hover {
+      box-shadow: 0 0 10px #6a11cb;
+      transform: scale(1.05);
+    }
+
+    /* Motivational Cards Section */
+    .templates {
+      margin-top: 50px;
+    }
+
+    .templates h2 {
+      margin-bottom: 25px;
+      font-size: 26px;
+    }
+
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 per row for bigger size */
+      gap: 30px;
+    }
+
+    .template-card {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .template-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #6a11cb;
+    }
+
+    .template-card h3 {
+      margin-bottom: 15px;
+      color: #6a11cb;
+      font-size: 22px;
+    }
+
+    .template-card p {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .template-card button {
+      background: #6a11cb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
+
+    .template-card button:hover {
+      background: #4f46e5;
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo">Hirevo.</div>
+  <ul>
+    <li onclick="goTo('dashboard.html')">Dashboard</li>
+    <li onclick="goTo('create.html')">Create Resume</li>
+    <li onclick="goTo('preview.html')">Preview</li>
+    <li onclick="goTo('templates.html')">Templates</li>
+    <li onclick="goTo('ats.html')">ATS Checker</li>
+  </ul>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <h2>Welcome, <span id="username"></span> 👋</h2>
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="card">
+    <h3>Start Building Your Resume 🚀</h3>
+    <p>Click on "Create Resume" to begin.</p>
+    <a href="create.html" class="cta-btn">Create Resume</a>
+  </div>
+
+  <!-- Motivational Cards Section -->
+  <div class="templates">
+    <h2>Choose Your Path 🚀</h2>
+    <div class="template-grid">
+      <div class="template-card">
+        <h3>Build Resume in Seconds</h3>
+        <p>Create a professional resume quickly and easily.</p>
+        <button onclick="goTo('create.html')">Start Now</button>
+      </div>
+      <div class="template-card">
+        <h3>Boost Your ATS Score</h3>
+        <p>Optimize your resume for Applicant Tracking Systems.</p>
+        <button onclick="goTo('ats.html')">Check ATS</button>
+      </div>
+      <div class="template-card">
+        <h3>Stand Out to Recruiters</h3>
+        <p>Choose layouts that highlight your strengths.</p>
+        <button onclick="goTo('templates.html')">Explore Templates</button>
+      </div>
+      <div class="template-card">
+        <h3>Download & Apply Instantly</h3>
+        <p>Export your resume and start applying today.</p>
+        <button onclick="goTo('preview.html')">Preview & Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* PROTECT PAGE */
+const user = localStorage.getItem("currentUser");
+if (!user) {
+  window.location.href = "login.html";
+}
+
+/* SHOW USER */
+document.getElementById("username").innerText = user.split("@")[0];
+
+/* NAVIGATION */
+function goTo(page) {
+  window.location.href = page;
+}
+
+/* LOGOUT */
+function logout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>

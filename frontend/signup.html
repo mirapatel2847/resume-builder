@@ -1,0 +1,148 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>AI Resume Builder</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CARD */
+.signup-card {
+    width: 100%;
+    max-width: 340px;
+    background: #020617;
+    border: 1px solid #334155;
+    color: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+/* HEADING */
+.signup-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* INPUT */
+.signup-card input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 6px;
+    background: rgba(99,102,241,0.05);
+    outline: none;
+    transition: 0.3s;
+}
+
+.signup-card input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 1px #6366f1;
+}
+
+/* BUTTON */
+.signup-card button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #6366f1;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signup-card button:hover {
+    background: #4f46e5;
+}
+
+.signup-card button:active {
+    transform: scale(0.95);
+}
+
+/* LOGIN TEXT */
+.login-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-text a {
+    color: white;
+    text-decoration: underline;
+}
+button:hover {
+    background: #4338ca;
+}
+    </style>
+    </head>
+    <body>
+        <form class="signup-card" onsubmit="signup(event)">
+  <h2>Sign Up</h2>
+
+  <input type="text" id="username" placeholder="Username" required>
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Password" required>
+
+  <button type="submit">Create Account</button>
+
+  <p class="login-text">
+    Already have an account? 
+    <a href="login.html">Log In</a>
+  </p>
+</form>
+<script>
+function signup(event) {
+  event.preventDefault();
+
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  // get existing users
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // check if user already exists
+  const userExists = users.find(user => user.email === email);
+
+  if (userExists) {
+    alert("User already exists. Please login.");
+    return;
+  }
+
+  // add new user
+  users.push({ username, email, password });
+
+  // save users
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // set current logged in user
+  localStorage.setItem("currentUser", email);
+
+  // redirect to dashboard
+  window.location.href = "dashboard.html";
+}
+</script>
+    </body>
+    </html>

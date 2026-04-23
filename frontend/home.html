@@ -1,0 +1,822 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>AI Resume Builder</title>
+    <style>
+        html {
+    scroll-behavior: smooth;
+}
+        /*banner*/
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4f46e5;
+            color: white;
+            text-decoration: none;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        .banner:hover .banner-content {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .banner p {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        svg {
+            margin-top: 2px;
+        }
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: linear-gradient(to bottom, black, #1A0033);
+      color: white;
+    }
+
+    /* NAVBAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 80px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 32px;
+      font-size: 14px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    .menu a:hover {
+      color: #ccc;
+    }
+
+    .register-btn {
+      background: #4f46e5;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-btn {
+      background: #4f46e5;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .register-btn:hover {
+      background: #4338ca;
+    }
+
+    /* HERO SECTION(body) */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .community {
+      display: flex;
+      align-items: center;
+      border: 1px solid #312e81;
+      border-radius: 50px;
+      padding: 6px 12px;
+      margin-top: 100px;
+      font-size: 12px;
+    }
+
+    .community img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid #312e81;
+      margin-left: -8px;
+    }
+
+    .community img:first-child {
+      margin-left: 0;
+    }
+
+    h2 {
+      font-size: 48px;
+      max-width: 850px;
+      margin-top: 10px;
+      line-height: 1.2;
+    }
+
+    .subtext {
+      max-width: 650px;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #ddd;
+    }
+
+    /* BUTTONS */
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .primary-btn {
+      font-size: 120%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #4f46e5;
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .primary-btn:hover {
+      background: #4338ca;
+    }
+
+    /*features*/
+    .section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            color: #c084fc;
+            background: #3b0764;
+            border: 1px solid #6b21a8;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .heading {
+            font-size: 40px;
+            margin-top: 16px;
+            font-weight: 600;
+            color: #cbd5f5;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .subtext {
+            margin-top: 8px;
+            color: #cbd5f5;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 18px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            padding: 10px 20px;
+        }
+
+        .card {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 300px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .card p {
+            font-size: 15px;
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        /* Special middle card gradient border */
+        .highlight {
+            padding: 1px;
+            border-radius: 13px;
+            background: linear-gradient(to bottom right, #4f46e5, #223B60);
+        }
+
+        .highlight .card {
+            background: #0f172a;
+        }
+
+        /*testimonial*/
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Geist", sans-serif;
+}
+
+body {
+    background: black;
+    color: white;
+}
+
+/* SECTION */
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+/* TEXT */
+.heading {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.subtext1 {
+    font-size: 16px;
+    color: #cbd5f5;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* CONTAINER */
+.wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+/* FADE EFFECT */
+.fade-top,
+.fade-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 120px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.fade-top {
+    top: 0;
+    background: linear-gradient(to bottom, black, transparent);
+}
+
+.fade-bottom {
+    bottom: 0;
+    background: linear-gradient(to top, black, transparent);
+}
+
+/* GRID */
+.columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    height: 600px;
+    overflow: hidden;
+}
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+    .columns {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 1024px) {
+    .columns {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* CARD */
+.card {
+    background: linear-gradient(to bottom, #020204, #191130);
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: #475569;
+}
+
+.card p {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 12px;
+}
+
+/* USER */
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #1e293b;
+}
+
+.user-name {
+    font-size: 14px;
+    color: #cbd5f5;
+}
+
+.user-company {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* ANIMATION */
+@keyframes scrollUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+.scroll1 { animation: scrollUp 25s linear infinite; }
+.scroll2 { animation: scrollUp 30s linear infinite; }
+.scroll3 { animation: scrollUp 20s linear infinite; }
+
+/*cta section*/
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: black;
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 20px;
+            background: linear-gradient(to bottom, #4C0083, #180047);
+            color: white;
+            text-align: left;
+        }
+
+        /* USERS + RATING */
+        .top-row {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatars {
+            display: flex;
+            margin-right: 12px;
+        }
+
+        .avatars img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-left: -8px;
+            transition: 0.3s;
+        }
+
+        .avatars img:first-child {
+            margin-left: 0;
+        }
+
+        .avatars img:hover {
+            transform: translateY(-2px);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .small-text {
+            font-size: 14px;
+            color: #d1d5db;
+        }
+
+        /* HEADING */
+        .heading1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-top: 20px;
+            background: linear-gradient(to right, white, #CAABFF);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subheading {
+            font-size: 18px;
+            margin-top: 8px;
+            background: linear-gradient(to right, white, #CAABFF);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* BUTTON */
+        .cta-btn {
+            margin-top: 16px;
+            padding: 10px 40px;
+            border-radius: 50px;
+            border: 1px solid #9333ea;
+            background: rgba(147, 51, 234, 0.6);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #6b21a8;
+        }
+
+        /* RESPONSIVE */
+        @media (min-width: 768px) {
+            .cta-container {
+                padding-left: 80px;
+            }
+
+            .heading {
+                font-size: 46px;
+                line-height: 60px;
+            }
+        }
+
+        /*contact section*/
+        .footer {
+  width: 100%;
+  padding: 60px 20px 20px;
+  background: linear-gradient(to bottom, #4f46e5, #4f46e5);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* TOP SECTION */
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 30px;
+}
+
+/* LEFT */
+.footer-left {
+  max-width: 400px;
+}
+
+.footer-text {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* RIGHT */
+.footer-right {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-right h2 {
+  color: white;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-right ul li {
+  margin-bottom: 8px;
+}
+
+.footer-right a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-right a:hover {
+  color: white;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.footer-bottom a {
+  color: white;
+  text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+  .footer-top {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+    </style>
+</head>
+<body>
+
+<a href="signup.html" class="banner">
+    <div class="banner-content">
+        <p style="font-size: 100%;">Build a professional, job-winning resume in minutes with AI—no design skills needed.</p>
+        
+        <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+            <path d="M2.91797 7H11.0846" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M7 2.9165L11.0833 6.99984L7 11.0832" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+    </div>
+</a>
+<nav>
+    <div style="font-size:150% ;font-family:cursive;"><b>Hirevo.</b></div>
+
+    <div class="menu">
+      <a href="#"><b>Home</b></a>
+      <a href="#features"><b>Features</b></a>
+      <a href="#testimonials"><b>Testimonials</b></a>
+      <a href="#contact"><b>Contact</b></a>
+    </div>
+    <button onclick="handleAuth()" class="register-btn">Login</button>
+
+<script>
+function handleAuth() {
+  const user = localStorage.getItem("currentuser");
+
+  if (user) {
+    window.location.href = "dashboard.html"; // already logged in
+  } else {
+    window.location.href = "login.html"; // not logged in
+  }
+}
+</script>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="community">
+      <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=50">
+      <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50">
+      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=50">
+      <span style="margin-left:10px;font-size: 130%;">Used by 10,000+ users</span>
+    </div>
+
+    <h2>Turn Your Skills and Experience into a Job-Winning Resume with AI</h2>
+
+    <p class="subtext">
+      Generate, customize, and improve your resume effortlessly with AI. 
+      From content writing to formatting, everything is designed to help you create a strong impression.
+    </p>
+
+    <div class="buttons">
+      <button onclick="window.location.href='signup.html'" class="primary-btn">
+        Get started →
+      </button>
+    </div>
+  </section>
+
+
+  <div id="features">
+
+  <div class="section">
+    <h2 class="heading">Build your Resume</h2>
+    <p class="subtext">
+        Create polished, professional, and ATS-friendly resumes in minutes—tailored to your skills and career goals.
+    </p>
+    <div class="features" id="features-cards"></div>
+</div>
+
+<script>
+    const featuresData = [
+        {
+            icon: "⚡",
+            title: "AI-Powered Resume Generation",
+            description: "Create a complete, professional resume instantly using AI based on your skills, education, and experience.",
+        },
+        {
+            icon: "👍",
+            title: "Smart Content Optimization",
+            description: "Get intelligent suggestions, keyword improvements, and ATS-friendly formatting to increase your chances of getting shortlisted.",
+        },
+        {
+            icon: "🎨",
+            title: "Easy Customization & Export",
+            description: "Edit your resume effortlessly and download it in clean, professional formats ready to share with recruiters.",
+        }
+    ];
+
+    const featuresContainer = document.getElementById("features-cards");
+
+featuresContainer.innerHTML = featuresData.map((feature, index) => `
+    ${index === 1 ? `<div class="highlight">` : ''}
+
+    <div class="card">
+        <div style="font-size:28px;">${feature.icon}</div>
+        <h3>${feature.title}</h3>
+        <p>${feature.description}</p>
+    </div>
+
+    ${index === 1 ? `</div>` : ''}
+`).join("");
+</script>
+</div>
+
+
+<div id="testimonials" class="section">
+
+    <h1 class="heading">People love us</h1>
+    <p class="subtext1">
+        Hear what our users say about us. We're always looking for ways to improve. 
+        If you have a positive experience with us, leave a review.
+    </p>
+
+    <div class="wrapper">
+        <div class="fade-top"></div>
+        <div class="fade-bottom"></div>
+
+        <div class="columns" id="testimonial-columns"></div>
+    </div>
+
+</div>
+
+<script>
+const testimonials = [
+    { text: "This AI resume builder saved me hours of work. I had no idea how to structure my resume, but it generated everything perfectly in minutes", name: "Alex", company: "Vercel", img: "https://i.pravatar.cc/100?img=1" },
+    { text: "I finally started getting interview calls after using this. The AI suggestions really helped improve my wording and made my resume look professional", name: "Harry", company: "Amazon", img: "https://i.pravatar.cc/100?img=2" },
+    { text: "As a student, I struggled to make my resume stand out. This tool made it simple and gave me confidence while applying for internships", name: "Jason", company: "Flipkart", img: "https://i.pravatar.cc/100?img=3" },
+    { text: "The best part is how easy it is to use. No design skills needed—just enter your details and the AI does the rest.", name: "Sofia", company: "Linear", img: "https://i.pravatar.cc/100?img=4" },
+    { text: "MI loved how it optimized my resume for ATS. It feels like my applications are finally getting noticed by recruiters.", name: "Alex J", company: "Microsoft", img: "https://i.pravatar.cc/100?img=5" },
+    { text: "This is way better than using templates manually. It actually understands your experience and turns it into something impactful.", name: "Emily", company: "Stripe", img: "https://i.pravatar.cc/100?img=6" }
+];
+
+const columns = document.getElementById("testimonial-columns");
+
+function createColumn(data, className) {
+    const col = document.createElement("div");
+    col.className = className;
+
+    const duplicated = [...data, ...data];
+
+    col.innerHTML = duplicated.map(t => `
+        <div class="card">
+            <p>${t.text}</p>
+            <div class="user">
+                <img src="${t.img}">
+                <div>
+                    <div class="user-name">${t.name}</div>
+                    <div class="user-company">${t.company}</div>
+                </div>
+            </div>
+        </div>
+    `).join("");
+
+    return col;
+}
+
+/* Add columns */
+columns.appendChild(createColumn(testimonials.slice(0,2), "scroll1"));
+columns.appendChild(createColumn(testimonials.slice(2,4), "scroll2"));
+columns.appendChild(createColumn(testimonials.slice(4,6), "scroll3"));
+</script>
+<div class="cta-container">
+
+    <div class="top-row">
+        <div class="avatars">
+            <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200">
+        </div>
+
+        <div>
+            <div class="rating">
+                ⭐⭐⭐⭐⭐
+            </div>
+            <p class="small-text">Used by 10k+ users</p>
+        </div>
+    </div>
+
+    <h1 class="heading1">Ready to try this app?</h1>
+
+    <p class="subheading">
+        Your next favourite tool is just one click away.
+    </p>
+
+    <button onclick="window.location.href='signup.html'" class="cta-btn">Get Started</button>
+
+</div>
+<br><Br>
+<footer id="contact" class="footer">
+  <div class="footer-top">
+
+    <!-- LEFT -->
+    <div class="footer-left">
+      <!-- LOGO -->
+      <div style="font-size:150% ;font-family:cursive; color:white"><b>Hirevo.</b></div>
+
+      <p class="footer-text">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+      </p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-right">
+
+      <!-- COMPANY -->
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#contact">Contact us</a></li>
+          <li><a href="#">Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <h2>Get in touch</h2>
+        <p>+1-212-456-7890</p>
+        <p>contact@example.com</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOTTOM -->
+  <p class="footer-bottom">
+    Copyright 2026 © 
+    <a href="home.html">Hirevo</a>. 
+    All Rights Reserved.
+  </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resume Preview</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+padding:40px;
+}
+
+.resume{
+max-width:850px;
+margin:auto;
+background:white;
+color:#111;
+padding:45px;
+border-radius:12px;
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+min-height:1120px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+border-bottom:2px solid #6366f1;
+padding-bottom:20px;
+margin-bottom:25px;
+}
+
+.left h1{
+font-size:34px;
+font-weight:700;
+color:#111827;
+}
+
+.left p{
+font-size:14px;
+color:#555;
+margin-top:5px;
+}
+
+.photo{
+width:120px;
+height:120px;
+border-radius:12px;
+object-fit:cover;
+border:3px solid #6366f1;
+}
+
+.section{
+margin-top:24px;
+}
+
+.section h2{
+font-size:16px;
+letter-spacing:1px;
+text-transform:uppercase;
+color:#6366f1;
+border-bottom:1px solid #ddd;
+padding-bottom:6px;
+margin-bottom:10px;
+}
+
+.section p{
+font-size:14px;
+line-height:1.7;
+color:#222;
+white-space:pre-line;
+}
+
+.two-col{
+display:grid;
+grid-template-columns:1fr 2fr;
+gap:28px;
+}
+
+.sidebar{
+background:#f8fafc;
+padding:20px;
+border-radius:10px;
+}
+
+button{
+display:block;
+margin:30px auto;
+padding:14px 28px;
+background:#6366f1;
+border:none;
+color:white;
+font-size:15px;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+background:#4f46e5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="resume" id="resume"></div>
+
+<button onclick="downloadPDF()">Download PDF</button>
+
+<script>
+const data = JSON.parse(localStorage.getItem("resume"));
+const template = localStorage.getItem("template") || "professional";
+
+const photo = data?.photo || "https://via.placeholder.com/150";
+
+function sec(title,val){
+if(!val) return "";
+return `
+<div class="section">
+<h2>${title}</h2>
+<p>${val}</p>
+</div>
+`;
+}
+
+const box = document.getElementById("resume");
+
+if(!data){
+box.innerHTML="<h2>No Resume Data Found</h2>";
+}
+
+/* PROFESSIONAL */
+if(template==="professional"){
+
+box.innerHTML=`
+<div class="header">
+<div class="left">
+<h1>${data.name || ""}</h1>
+<p>${data.email || ""}</p>
+<p>${data.phone || ""} | ${data.location || ""}</p>
+<p>${data.linkedin || ""}</p>
+</div>
+
+<img src="${photo}" class="photo">
+</div>
+
+${sec("Professional Summary",data.summary)}
+${sec("Skills",data.skills)}
+${sec("Experience",data.experience)}
+${sec("Projects",data.projects)}
+${sec("Education",data.education)}
+${sec("Achievements",data.achievements)}
+`;
+}
+
+/* MODERN */
+if(template==="modern"){
+
+box.innerHTML=`
+<div class="two-col">
+
+<div class="sidebar">
+
+<img src="${photo}" class="photo" style="width:100%;height:220px;margin-bottom:15px;">
+
+${sec("Contact",`${data.email}
+${data.phone}
+${data.location}`)}
+
+${sec("Skills",data.skills)}
+
+</div>
+
+<div>
+
+<h1 style="font-size:34px;margin-bottom:8px;">${data.name}</h1>
+<p style="color:#6366f1;margin-bottom:18px;">${data.linkedin || ""}</p>
+
+${sec("Summary",data.summary)}
+${sec("Experience",data.experience)}
+${sec("Projects",data.projects)}
+${sec("Education",data.education)}
+${sec("Achievements",data.achievements)}
+
+</div>
+
+</div>
+`;
+}
+
+/* ATS */
+if(template==="classic"){
+
+box.innerHTML=`
+<h1 style="font-size:34px;">${data.name}</h1>
+<p>${data.email} | ${data.phone} | ${data.location}</p>
+<p>${data.linkedin}</p>
+
+${sec("Summary",data.summary)}
+${sec("Skills",data.skills)}
+${sec("Experience",data.experience)}
+${sec("Projects",data.projects)}
+${sec("Education",data.education)}
+${sec("Achievements",data.achievements)}
+`;
+}
+if(template==="creative"){
+
+box.innerHTML=`
+<div style="display:grid;grid-template-columns:280px 1fr;min-height:1000px;">
+
+<!-- LEFT SIDEBAR -->
+<div style="
+background:linear-gradient(to bottom,#6366f1,#4338ca);
+color:white;
+padding:30px;
+">
+
+<img src="${photo}" style="
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:20px;
+display:block;
+margin:auto;
+border:4px solid rgba(255,255,255,.3);
+margin-bottom:20px;
+">
+
+<h1 style="
+font-size:28px;
+text-align:center;
+margin-bottom:8px;
+">${data.name || ""}</h1>
+
+<p style="text-align:center;font-size:14px;opacity:.9;">
+${data.location || ""}
+</p>
+
+<div style="margin-top:30px;">
+
+${sec("Contact",`${data.email || ""}
+${data.phone || ""}
+${data.linkedin || ""}`)}
+
+${sec("Skills",data.skills)}
+
+</div>
+
+</div>
+
+<!-- RIGHT CONTENT -->
+<div style="padding:35px;">
+
+${sec("Profile",data.summary)}
+
+${sec("Experience",data.experience)}
+
+${sec("Projects",data.projects)}
+
+${sec("Education",data.education)}
+
+${sec("Achievements",data.achievements)}
+
+</div>
+
+</div>
+`;
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+function downloadPDF(){
+const element=document.getElementById("resume");
+
+html2pdf().set({
+margin:0,
+filename:"resume.pdf",
+image:{type:'jpeg',quality:1},
+html2canvas:{scale:2},
+jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+}).from(element).save();
+}
+</script>
+
+</body>
+</html>
